@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- <%- include ('../../partials/head.ejs') %> -->
+     <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, <initial-scale=1" />
+	<title>Site web dynamique</title>
+	<link rel="stylesheet" href="../public/css/style.css"> 
+	
+</head>
+
+<body>
+	
+	<!-- entete de la page -->
+	<header>
+		<%- include ('../../partials/header.ejs') %>
+	</header>
+	
+	<!-- le navbar de la page -->
+	<nav>
+		<%- include ('../../partials/nav.ejs') %>
+		
+	</nav>
+	
+	<!-- le contenu -->
+	
+  <main>
+    <h3><%= title %></h3>
+    <div>
+        <article id="art2">
+            <% donnee.forEach(function(f) { %>
+                <h4>Titre: <%= f.title %></h4>
+                <p>Description: <%= f.description %> .</p>
+                <p>Année De Publication: <%= f.year %></p>
+                <p>Auteur: <%= f.author %></p>
+                <p>Genre: <%= f.genre %></p>
+                <!-- Ajoutez d'autres détails du film ici -->
+            <% }); %>
+        </article>
+    </div>
+</main>
+  <footer>
+    <%- include('../../partials/footer.ejs') %>
+  </footer>
+</body>
+</html>
+			
+	
+	

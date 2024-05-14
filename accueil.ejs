@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<%- include ('partials/head.ejs') %>
+	
+</head>
+<body>
+	
+	<!-- entete de la page -->
+	<header>
+		<%- include ('./partials/header.ejs') %>
+	</header>
+	
+	<!-- le navbar de la page -->
+	<nav>
+		<%- include ('partials/nav.ejs') %>
+		
+	</nav>
+	
+	<!-- le contenu -->
+	<main>
+		<h3><%= title %></h3>
+		
+		<div>
+			<article id="art2">
+				<a href="/ajout" style="margin-bottom: 4px;">Nouveau film</a>
+				<table border style="width: 100%;">
+					<tr>
+						<th>Titre</th>
+						<th>Année</th>
+						<th>Réalisateur</th>
+						<th>Genre</th>
+						<th>Action</th>
+					</tr>
+	 				
+					<% data.forEach((film) => { %>
+					
+						<tr>
+							<td><%= film.title %></td>
+							<td><%= film.year %></td>
+							<td><%= film.author %></td>
+							<td><%= film.genre %></td>
+							<td class="menu">
+								<a href="/details/<%= film.id %>">Détails</a>&nbsp;&nbsp;
+								<a href="/<%=film.id%>">Modifier</a>&nbsp;&nbsp;
+								<form action="/sup/<%= film.id%>?_method=DELETE", method="post">
+									<input type="submit" value = "Supprimer" class="sup" onclick="return confirmDelete()">
+								</form>
+								<script>
+									function confirmDelete() {
+										return confirm("Êtes-vous sûr de vouloir supprimer ce film ?");
+									}
+								</script>
+							</td>
+						</tr>
+						<% }); %>
+						
+				</table>
+			</article>
+		</div>
+	</main>
+	
+	<!-- le pied de page -->
+	
+	<footer>
+		<%- include ('partials/footer.ejs') %>
+		
+	</footer>
+</body>
+</html>
